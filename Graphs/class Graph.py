@@ -5,19 +5,32 @@ class SimpleGraph: #Граф заданный матрицей смежност�
 
         self.matrix = matrix
 
-class SimpleGraphList:
-    def __init__(self, adjacency_list):
-        self.adjacency_list = adjacency_list
+    def __str__(self):
+        return "\n".join([" ".join(map(str, row)) for row in self.matrix])
 
-    def neighbors(self, vertex):
-        return self.adjacency_list[vertex]
+    def WarshallAlgorithm(self):
+        n = len(self.matrix)
+        for k in range(n):
+            for i in range(n):
+                for j in range(n):
+                    if self.matrix[i][k] == 1 and self.matrix[k][j] == 1:
+                        self.matrix[i][j] = 1
 
-class IncidenceGraph:
-    def __init__(self, matrix):
-        self.matrix = matrix
-        self.num_vertices = len(matrix)
-        self.num_edges = len(matrix[0]) if matrix else 0
 
-graph = SimpleGraphList([[1, 2] , [4, 5, 6], [7, 8, 9]])
 
+graph = SimpleGraph([
+    [0, 1, 1, 0, 1, 1],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 1, 0, 0]
+])
+
+print("Матрица до алгоритма Воршелла:")
+print(graph)
+
+graph.WarshallAlgorithm()
+
+print("\nМатрица после алгоритма Воршелла:")
 print(graph)
