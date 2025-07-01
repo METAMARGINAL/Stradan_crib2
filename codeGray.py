@@ -20,5 +20,4 @@ def recur(n, base, nums):
     # Combine with original and recurse
     return recur(n-1, base*2, nums + temp)
 
-print(grayCode(2))  # Output: [0, 1, 3, 2]
-print(grayCode(4))  # Output: [0, 1, 3, 2, 6, 7, 5, 4]
+print(grayCode(4))

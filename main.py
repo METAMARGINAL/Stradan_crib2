@@ -1,30 +1,14 @@
-
-def Recursive_binarySearch(arr, f, left, right):
-    if left > right:
-        return -1
-    mid = (left + right) // 2
-    if  arr[mid] == f:
-        return mid
-    if arr[mid] > f:
-       return Recursive_binarySearch(arr, f, left, mid - 1)
+def cubi(n):
+    if n == 1:
+        return 1
     else:
-       return Recursive_binarySearch(arr, f, mid + 1, right)
+        return n*n*n + cubi(n-1)
 
-def binarySearch(arr, f):
-    left = 0
-    right = len(arr) - 1
 
-    if left > right:
-        return -1
+def cubi2(n):
+    result = 0
+    for i in range(1, n+1):
+        result += i*i*i
+    return result
 
-    while left <= right:
-        mid = (left + right) // 2
-
-        if arr[mid] == f:
-            return mid
-        elif f < arr[mid]:
-            right = mid - 1
-        else:
-            left = mid + 1
-
-print(binarySearch([1, 2, 3, 4, 5], 5))
+print(cubi2(3))

@@ -30,4 +30,5 @@ def findMedian(arr):
         return (left + right) / 2
 
 array = [4, 1, 10, 9, 7, 12, 8, 2, 15]
+print(sorted(array))
 print("Медиана:", findMedian(array))
