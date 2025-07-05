@@ -1,14 +1,12 @@
-def cubi(n):
-    if n == 1:
-        return 1
-    else:
-        return n*n*n + cubi(n-1)
+def backpack(index, w, n,objects, weight, cost):
+    if (weight > w):
+        return  0
+    if (index == n):
+        return cost
+    take = 0
+    if (weight + objects[index][0] <=w):
+        take = backpack(index+1, w, n,objects, weight + objects[index][0], cost + objects[index][1])
 
+    skip = backpack(index+1, w, n, objects, weight, cost)
 
-def cubi2(n):
-    result = 0
-    for i in range(1, n+1):
-        result += i*i*i
-    return result
-
-print(cubi2(3))
+    return max(take, skip)
